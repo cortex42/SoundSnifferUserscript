@@ -20,8 +20,15 @@ function addButton() {
     getTrackIdButton.type = "button";
     getTrackIdButton.value = "Get Track ID";
     getTrackIdButton.onclick = getTrackId;
-    getTrackIdButton.setAttribute("style", "position:absolute;top:250px;right:50px;");
-    document.body.appendChild(getTrackIdButton);
+    getTrackIdButton.classList.add("sc-button");
+    getTrackIdButton.classList.add("sc-button-medium");
+    getTrackIdButton.classList.add("sc-button-responsive");
+    getTrackIdButton.setAttribute("role", "button");
+    getTrackIdButton.setAttribute("role", "button");
+    var buttonGroup = document.getElementsByClassName("sc-button-group sc-button-group-medium");
+    if(buttonGroup.length > 0) {
+        buttonGroup[0].appendChild(getTrackIdButton);
+    }
 }
 
 
