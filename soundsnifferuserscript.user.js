@@ -7,15 +7,23 @@
 // @grant          GM_xmlhttpRequest
 // @grant          GM_notification
 // @require        https://code.jquery.com/jquery-3.2.1.js
+// @require        https://gist.github.com/raw/2625891/waitForKeyElements.js
 // @run-at         document-idle
 // ==/UserScript==
 
-var getTrackIdButton = document.createElement("input");
-getTrackIdButton.type = "button";
-getTrackIdButton.value = "Get Track ID";
-getTrackIdButton.onclick = getTrackId;
-getTrackIdButton.setAttribute("style", "position:absolute;top:250px;right:50px;");
-document.body.appendChild(getTrackIdButton);
+
+waitForKeyElements("div.fullHero__title", addButton);
+
+function addButton() {
+    console.log("[SoundSnifferUserscript] Change detected!");
+    var getTrackIdButton = document.createElement("input");
+    getTrackIdButton.type = "button";
+    getTrackIdButton.value = "Get Track ID";
+    getTrackIdButton.onclick = getTrackId;
+    getTrackIdButton.setAttribute("style", "position:absolute;top:250px;right:50px;");
+    document.body.appendChild(getTrackIdButton);
+}
+
 
 
 function getTrackId() {
