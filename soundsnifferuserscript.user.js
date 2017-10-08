@@ -2,7 +2,7 @@
 // @name           SoundSnifferUserscript
 // @description    Find the track id of a track on soundcloud.
 // @author         cortex42 (https://github.com/cortex42)
-// @include        https://soundcloud.com/*/*
+// @include        https://soundcloud.com/*
 // @version        1.0
 // @grant          GM_xmlhttpRequest
 // @grant          GM_notification
@@ -16,18 +16,20 @@ waitForKeyElements("div.fullHero__title", addButton);
 
 function addButton() {
     console.log("[SoundSnifferUserscript] Change detected!");
-    var getTrackIdButton = document.createElement("input");
-    getTrackIdButton.type = "button";
-    getTrackIdButton.value = "Get Track ID";
-    getTrackIdButton.onclick = getTrackId;
-    getTrackIdButton.classList.add("sc-button");
-    getTrackIdButton.classList.add("sc-button-medium");
-    getTrackIdButton.classList.add("sc-button-responsive");
-    getTrackIdButton.setAttribute("role", "button");
-    getTrackIdButton.setAttribute("role", "button");
-    var buttonGroup = document.getElementsByClassName("sc-button-group sc-button-group-medium");
-    if(buttonGroup.length > 0) {
-        buttonGroup[0].appendChild(getTrackIdButton);
+    if(document.getElementsByClassName("soundTitle__playButton soundTitle__playButtonHero").length > 0) {
+        var getTrackIdButton = document.createElement("input");
+        getTrackIdButton.type = "button";
+        getTrackIdButton.value = "Get Track ID";
+        getTrackIdButton.onclick = getTrackId;
+        getTrackIdButton.classList.add("sc-button");
+        getTrackIdButton.classList.add("sc-button-medium");
+        getTrackIdButton.classList.add("sc-button-responsive");
+        getTrackIdButton.setAttribute("role", "button");
+        getTrackIdButton.setAttribute("role", "button");
+        var buttonGroup = document.getElementsByClassName("sc-button-group sc-button-group-medium");
+        if(buttonGroup.length > 0) {
+            buttonGroup[0].appendChild(getTrackIdButton);
+        }
     }
 }
 
